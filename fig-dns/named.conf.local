@@ -1,0 +1,9 @@
+zone "dev.iowacodecamp.com" {
+  type master;
+  file "/etc/bind/db.dev.iowacodecamp.com";
+};
+
+zone "local.iowacodecamp.com" {
+  type master;
+  file "/etc/bind/db.local.iowacodecamp.com";
+};

@@ -1,0 +1,15 @@
+dns:
+  image: nicgrayson/fig-dns:latest
+  ports:
+    - "53:53"
+    - "53:53/udp"
+
+lb:
+  image: dockerfile/haproxy:latest
+  dns: 172.17.42.1
+  volumes:
+    - fig-haproxy/:/haproxy-override
+  ports:
+    - "80:80"
+  links:
+    - dns

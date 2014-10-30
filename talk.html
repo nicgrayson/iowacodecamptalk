@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>(Docker for Local Development)</title>
+<meta name="author" content="(Nic Grayson)"/>
+<link rel="stylesheet" href="file:////Users/ngrayson/Dropbox/org-mode/reveal.js/css/reveal.min.css"/>
+<link rel="stylesheet" href="file:////Users/ngrayson/Dropbox/org-mode/reveal.js/css/theme/banno.css" id="theme"/>
+
+<link rel="stylesheet" href="file:////Users/ngrayson/Dropbox/org-mode/reveal.js/css/print/pdf.css" type="text/css" media="print"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>Docker for Local Development</h1>
+<h2>Nic Grayson</h2>
+<h2><a href="mailto:nic.grayson@gmail.com">nic.grayson@gmail.com</a></h2>
+<h2></h2></section>
+
+<section>
+<section id="sec-1" >
+
+<h2>What problems are we trying to solve?</h2>
+<ol class="org-ol">
+<li class="fragment roll-in">"It works on my machine!"
+</li>
+<li class="fragment roll-in">Fixing production bugs by running a copy of production locally
+</li>
+<li class="fragment roll-in">Running a full stack on a workstation with a different OS is problematic
+</li>
+</ol>
+</section>
+
+</section>
+<section>
+<section id="sec-2" >
+
+<h2>Docker</h2>
+<ul class="org-ul">
+<li class="fragment roll-in">Docker is an open platform for developers and sysadmins to build, ship, and run applications.
+</li>
+<li class="fragment roll-in">Find out more at <a href="http://docker.com">http://docker.com</a>
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-3" >
+
+<h2>Fig</h2>
+<ul class="org-ul">
+<li class="fragment roll-in">Fig is a tool for managing a single docker host
+</li>
+<li class="fragment roll-in">Configuration tool for starting apps and their dependencies
+</li>
+<li class="fragment roll-in">Find out more at <a href="http://fig.sh">http://fig.sh</a>
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-4" >
+
+<h2>Boot2docker</h2>
+<ul class="org-ul">
+<li class="fragment roll-in">Run docker on Mac OS (and windows)
+</li>
+<li class="fragment roll-in">Creates and manages a Virtualbox VM
+</li>
+<li class="fragment roll-in">Allows you to run docker commands like you were running linux
+</li>
+<li class="fragment roll-in">Find out more at <a href="http://github.com/boot2docker/boot2docker">http://github.com/boot2docker/boot2docker</a>
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-5" >
+
+<h2>Example Stack</h2>
+<ul class="org-ul">
+<li>Load Balancer
+</li>
+<li>Web Server
+</li>
+<li>Database Server
+</li>
+</ul>
+</section>
+<section id="sec-5-1" >
+
+<h3>test</h3>
+<ul class="org-ul">
+<li>test
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-6" >
+
+<h2>Fig.yml</h2>
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #F92672;">dns</span>:
+  <span style="color: #F92672;">image</span>: nicgrayson/fig-dns:latest
+  <span style="color: #F92672;">ports</span>:
+    - <span style="color: #E6DB74;">"53:53"</span>
+    - <span style="color: #E6DB74;">"53:53/udp"</span>
+<span style="color: #F92672;">lb</span>:
+  <span style="color: #F92672;">image</span>: nicgrayson/fig-haproxy:latest
+  <span style="color: #F92672;">dns</span>: 172.17.42.1
+  <span style="color: #F92672;">ports</span>:
+    - <span style="color: #E6DB74;">"80:80"</span>
+  <span style="color: #F92672;">links</span>:
+    - dns
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="file:////Users/ngrayson/Dropbox/org-mode/reveal.js/lib/js/head.min.js"></script>
+<script src="file:////Users/ngrayson/Dropbox/org-mode/reveal.js/js/reveal.min.js"></script>
+<script>
+
+        		// Full list of configuration options available here:
+        		// https://github.com/hakimel/reveal.js#configuration
+        		Reveal.initialize({
+        			controls: true,
+        			progress: true,
+        			history: false,
+        			center: true,
+                                slideNumber: true,
+        			rollingLinks: false,
+        			keyboard: true,
+        			overview: true,
+        			 // slide width
+        			 // slide height
+        			 // slide margin
+        			 // slide minimum scaling factor
+        			 // slide maximum scaling factor
+
+
+        			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        			transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        			transitionSpeed: 'default',
+
+        			// Optional libraries used to extend on reveal.js
+        			dependencies: [
+        				{ src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+        				,{ src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        				,{ src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } }
+        				,{ src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        				,{ src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+        				,{ src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        				// { src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+        				// { src: 'file:////Users/ngrayson/Dropbox/org-mode/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+
+        			]
+        		});
+</script>
+</body>
+</html>

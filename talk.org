@@ -1,0 +1,50 @@
+#+Title: Docker for Local Development
+#+Author: Nic Grayson
+#+Email: nic.grayson@gmail.com
+
+#+OPTIONS: reveal_center:t  reveal_control:t
+#+OPTIONS: reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: toc:nil
+#+REVEAL_THEME: banno
+
+* What problems are we trying to solve?
+  #+ATTR_REVEAL: :frag roll-in
+1. "It works on my machine!"
+2. Fixing production bugs by running a copy of production locally
+3. Running a full stack on a workstation with a different OS is problematic
+* Docker
+  #+ATTR_REVEAL: :frag roll-in
+- Docker is an open platform for developers and sysadmins to build, ship, and run applications.
+- Find out more at http://docker.com
+* Fig
+  #+ATTR_REVEAL: :frag roll-in
+- Fig is a tool for managing a single docker host
+- Configuration tool for starting apps and their dependencies
+- Find out more at http://fig.sh
+* Boot2docker
+  #+ATTR_REVEAL: :frag roll-in
+- Run docker on Mac OS (and windows)
+- Creates and manages a Virtualbox VM
+- Allows you to run docker commands like you were running linux
+- Find out more at http://github.com/boot2docker/boot2docker
+* Example Stack
+- Load Balancer
+- Web Server
+- Database Server
+** test
+- test
+* Fig.yml
+#+BEGIN_SRC yaml
+dns:
+  image: nicgrayson/fig-dns:latest
+  ports:
+    - "53:53"
+    - "53:53/udp"
+lb:
+  image: nicgrayson/fig-haproxy:latest
+  dns: 172.17.42.1
+  ports:
+    - "80:80"
+  links:
+    - dns
+#+END_SRC
