@@ -13,3 +13,10 @@ lb:
     - "80:80"
   links:
     - dns
+
+api:
+  image: nicgrayson/fig-api:latest
+  ports:
+    - "4567:4567"
+  links:
+    - lb
