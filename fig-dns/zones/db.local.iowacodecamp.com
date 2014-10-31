@@ -8,5 +8,4 @@ local.iowacodecamp.com.	14400	IN	SOA	ns2.iowacodecamp.com.	ops.iowacodecamp.com.
 )
 local.iowacodecamp.com.	 14400	IN	NS	ns2.iowacodecamp.com.
 local.iowacodecamp.com.	 14400	IN	NS	ns1.iowacodecamp.com.
-local.iowacodecamp.com.	 14400	IN	A	192.168.59.103
-*.local.iowacodecamp.com. 14400	IN	A	192.168.59.103
+local.iowacodecamp.com.	 14400	IN	A	192.168.59.3
