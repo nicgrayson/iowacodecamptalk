@@ -29,22 +29,9 @@
 - Find out more at http://github.com/boot2docker/boot2docker
 * Example Stack
 - Load Balancer
-- Web Server
-- Database Server
-** test
-- test
-* Fig.yml
-#+BEGIN_SRC yaml
-dns:
-  image: nicgrayson/fig-dns:latest
-  ports:
-    - "53:53"
-    - "53:53/udp"
-lb:
-  image: nicgrayson/fig-haproxy:latest
-  dns: 172.17.42.1
-  ports:
-    - "80:80"
-  links:
-    - dns
-#+END_SRC
+- API
+* Setup
+- setup zones for docker dns
+- setup haproxy load balancer
+- setup laptop dns
+- http://github.com/nicgrayson/iowacodecamp
