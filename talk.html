@@ -82,21 +82,15 @@
 <section>
 <section id="sec-5" >
 
-<h2>Example Stack</h2>
+<h2>Setup</h2>
 <ul class="org-ul">
-<li>Load Balancer
+<li>setup zones for docker dns
 </li>
-<li>Web Server
+<li>setup haproxy load balancer
 </li>
-<li>Database Server
+<li>setup laptop dns
 </li>
-</ul>
-</section>
-<section id="sec-5-1" >
-
-<h3>test</h3>
-<ul class="org-ul">
-<li>test
+<li><a href="http://github.com/nicgrayson/iowacodecamp">http://github.com/nicgrayson/iowacodecamp</a>
 </li>
 </ul>
 </section>
@@ -105,23 +99,7 @@
 <section>
 <section id="sec-6" >
 
-<h2>Fig.yml</h2>
-<div class="org-src-container">
-
-<pre class="src src-yaml"><span style="color: #F92672;">dns</span>:
-  <span style="color: #F92672;">image</span>: nicgrayson/fig-dns:latest
-  <span style="color: #F92672;">ports</span>:
-    - <span style="color: #E6DB74;">"53:53"</span>
-    - <span style="color: #E6DB74;">"53:53/udp"</span>
-<span style="color: #F92672;">lb</span>:
-  <span style="color: #F92672;">image</span>: nicgrayson/fig-haproxy:latest
-  <span style="color: #F92672;">dns</span>: 172.17.42.1
-  <span style="color: #F92672;">ports</span>:
-    - <span style="color: #E6DB74;">"80:80"</span>
-  <span style="color: #F92672;">links</span>:
-    - dns
-</pre>
-</div>
+<h2>Demo Time</h2>
 </section>
 </section>
 </div>

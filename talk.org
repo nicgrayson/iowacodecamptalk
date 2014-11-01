@@ -27,11 +27,9 @@
 - Creates and manages a Virtualbox VM
 - Allows you to run docker commands like you were running linux
 - Find out more at http://github.com/boot2docker/boot2docker
-* Example Stack
-- Load Balancer
-- API
 * Setup
 - setup zones for docker dns
 - setup haproxy load balancer
 - setup laptop dns
 - http://github.com/nicgrayson/iowacodecamp
+* Demo Time
